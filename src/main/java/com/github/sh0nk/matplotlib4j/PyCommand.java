@@ -79,11 +79,11 @@ public class PyCommand {
             line = br.readLine();
         }
 
-        String msg = sb.toString();
+        String msg = sb.toString().trim();
         if (hasError) {
             LOGGER.error(msg);
             throw new PythonExecutionException("Python execution error: " + msg);
-        } else {
+        } else if (!msg.isEmpty()) {
             LOGGER.warn(msg);
         }
     }
