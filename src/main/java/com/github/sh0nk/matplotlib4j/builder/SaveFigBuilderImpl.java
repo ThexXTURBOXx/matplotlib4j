@@ -5,8 +5,10 @@ import java.util.List;
 public class SaveFigBuilderImpl implements SaveFigBuilder {
 
     private final CompositeBuilder<SaveFigBuilder> innerBuilder = new CompositeBuilder<>(this);
+    private final String methodPrefix;
 
-    public SaveFigBuilderImpl(String fname) {
+    public SaveFigBuilderImpl(String methodPrefix, String fname) {
+        this.methodPrefix = methodPrefix;
         innerBuilder.addToArgs(fname);
     }
 
@@ -73,6 +75,11 @@ public class SaveFigBuilderImpl implements SaveFigBuilder {
     @Override
     public SaveFigBuilder addToKwargs(String k, boolean v) {
         return innerBuilder.addToKwargs(k, v);
+    }
+
+    @Override
+    public String getMethodPrefix() {
+        return methodPrefix;
     }
 
     @Override

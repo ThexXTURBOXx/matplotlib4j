@@ -21,6 +21,14 @@ public class AxLineBuilderImpl implements AxLineBuilder {
         this.axis = axis;
     }
 
+    public static AxLineBuilderImpl axvLineBuilder() {
+        return new AxLineBuilderImpl("v", "x");
+    }
+
+    public static AxLineBuilderImpl axhLineBuilder() {
+        return new AxLineBuilderImpl("h", "y");
+    }
+
     @Override
     public AxLineBuilder at(Number value) {
         return innerBuilder.addToKwargs(axis, value);

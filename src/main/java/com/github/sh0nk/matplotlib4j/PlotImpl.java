@@ -138,14 +138,14 @@ public class PlotImpl implements Plot {
 
     @Override
     public AxLineBuilder axvline() {
-        AxLineBuilder builder = new AxLineBuilderImpl("v", "x");
+        AxLineBuilder builder = AxLineBuilderImpl.axvLineBuilder();
         registeredBuilders.add(builder);
         return builder;
     }
 
     @Override
     public AxLineBuilder axhline() {
-        AxLineBuilder builder = new AxLineBuilderImpl("h", "y");
+        AxLineBuilder builder = AxLineBuilderImpl.axhLineBuilder();
         registeredBuilders.add(builder);
         return builder;
     }
@@ -201,7 +201,7 @@ public class PlotImpl implements Plot {
 
     @Override
     public SaveFigBuilder savefig(String fname) {
-        SaveFigBuilder builder = new SaveFigBuilderImpl(fname);
+        SaveFigBuilder builder = new SaveFigBuilderImpl(pplImportName + ".", fname);
         registeredBuilders.add(builder);
         return builder;
     }
@@ -253,7 +253,7 @@ public class PlotImpl implements Plot {
 
         // show
         if (!dryRun) {
-            scriptLines.add("plt.show()");
+            scriptLines.add(pplImportName + ".show()");
         }
 
         PyCommand command = new PyCommand(pythonConfig);

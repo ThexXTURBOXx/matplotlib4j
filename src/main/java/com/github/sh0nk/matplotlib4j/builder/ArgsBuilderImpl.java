@@ -55,7 +55,7 @@ public class ArgsBuilderImpl implements Builder {
     @Override
     public String build() {
         StringBuilder sb = new StringBuilder();
-        sb.append("plt.");
+        sb.append(getMethodPrefix());
         sb.append(key);
         sb.append('(');
         Joiner.on(',').appendTo(sb, args);
